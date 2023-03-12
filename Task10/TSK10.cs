@@ -6,7 +6,7 @@
 Console.Clear();
 Console.WriteLine("Введите трехзначное число: ");
 int a = Convert.ToInt32(Console.ReadLine());
-while (a>999)
+while (a>999||a<100)
 {
     Console.WriteLine("Неверно! Введите трехзначное число: ");
     a = Convert.ToInt32(Console.ReadLine());
