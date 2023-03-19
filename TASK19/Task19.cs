@@ -10,7 +10,7 @@ int a = n/10000;
 int b = (n%10000)/1000;
 int c = (n%100)/10;
 int d = n%10;
-if (a==d||c==d)
+if (a==d&&c==d)
     Console.Write("Число является полиномом");
 else
     Console.Write("Число не является полиномом");
