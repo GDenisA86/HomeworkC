@@ -4,17 +4,17 @@
 void InputArray (int[] array)
 {
     for (int i = 0; i < array.Length; i++)
-    array[i] = new Random().Next(100, 1000);
+    array[i] = new Random().Next(1, 10);
 }
 
 int schet(int[] array)
 {
-    int n = array[1];
-    for (int i = 0; i < array.Length; i=i+2)
+    int sum = 0;
+    for (int i = 1; i < array.Length; i=i+2)
     {
-        n=n+array[i];
+        sum=sum+array[i];
     }
-    return n;
+    return sum;
 }
 Console.Clear();
 Console.Write("введите кол-во элементов в массиве: ");
@@ -22,4 +22,4 @@ int n = int.Parse(Console.ReadLine()!);
 int[] array = new int[n];
 InputArray (array);
 Console.WriteLine($"Начальный массив: [{string.Join(", ", array)}]");
-Console.WriteLine($"Кол-во чётных чисел в массиве равно: {schet(array)}");
+Console.WriteLine($"Сумма элементов, стоящих на нечётных позициях: {schet(array)}");
