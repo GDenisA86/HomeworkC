@@ -23,6 +23,7 @@ void PrintMatrix(int[,] matrix)
         Console.WriteLine();
     }
 }
+
 void Poisk(int[,] matrix)
 {
 Console.WriteLine("Введите индекс строки: ");
