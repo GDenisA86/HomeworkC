@@ -24,15 +24,15 @@ void PrintMatrix(int[,] matrix)
 }
 void Sredn(int[,] matrix)
 {
-    int sum = 0;
     int count = 0;
     for (int j=0;j<matrix.GetLength(1);j++)
     {
+        double sum = 0;
         for (int i=0;i<matrix.GetLength(0);i++)
         {
             sum = sum + matrix[i, j];
-        }
-        Console.Write($"{sum} \t");
+            }
+    Console.Write($"{sum/matrix.GetLength(0)} \t");
     }
 }
 Console.Clear();
@@ -42,4 +42,5 @@ int[,] matrix = new int[size[0], size[1]];
 InputMatrix(matrix);
 PrintMatrix(matrix);
 Console.WriteLine();
+Console.WriteLine("Среднее арифметическое по каждому столбцу равно:");
 Sredn(matrix);
