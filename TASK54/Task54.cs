@@ -51,7 +51,9 @@ Console.Write("Введите размеры двумерного массива
 int[] size = Console.ReadLine()!.Split().Select(x => int.Parse(x)).ToArray();
 int[,] matrix = new int[size[0], size[1]];
 InputMatrix(matrix);
+Console.WriteLine("Начальный массив: ");
 PrintMatrix(matrix);
 Console.WriteLine();
+Console.WriteLine("Отсортированный массив: ");
 Replace(matrix);
 PrintMatrix(matrix);
