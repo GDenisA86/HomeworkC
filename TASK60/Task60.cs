@@ -5,45 +5,56 @@
 // 27(0,0,1) 90(0,1,1)
 // 26(1,0,1) 55(1,1,1)
 
-int[,,]RandomArray(int field, int rows, int columns)
+int[,,] CreateMatrix(int row, int col, int dep, int min, int max)
 {
-    int[,,] NewArray = new int[field, rows, columns];
-    for(int i=0;i<field;i++)
+    int[,,] matrix = new int[row, col, dep];
+    for (int i = 0; i < matrix.GetLength(0); i++)
     {
-        for(int j = 0;j<rows;j++)
+        for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            for(int k=0;k<columns;k++)
+            for (int k = 0; k < matrix.GetLength(2); k++) { matrix[i, j, k] = GetUniqueValue(matrix, min, max, i, j, k); }
+        }
+    }
+    return matrix;
+}
+Random rnd = new Random();
+
+int GetUniqueValue(int[,,] matrix, int min, int max, int i, int j, int k)
+{
+    int value = default;
+    bool exist = true;
+    while (exist)
+    {
+        bool _break = false;
+        value = rnd.Next(min, max + 1);
+        for (int i1 = 0; i1 < matrix.GetLength(0); i1++)
+        {
+            if (_break) { break; }
+            for (int j1 = 0; j1 < matrix.GetLength(1); j1++)
             {
-                NewArray[i,j,k]=i+j+k;
+                if (_break) { break; }
+                for (int k1 = 0; k1 < matrix.GetLength(2); k1++)
+                {
+                    if (matrix[i1, j1, k1] == value) { _break = true; break; }
+                    if (i1 == i && j1 == j && k1 == k) { exist = false; }
+                }
             }
         }
     }
-    return NewArray;
+    return value;
 }
-
-void ShowArray(int[,,] array)
+static void PrintMatrix(int[,,] matrix)
 {
-    for (int i =0; i<array.GetLength(0);i++)
+    for (int i = 0; i < matrix.GetLength(0); i++)
     {
-        for(int j =0;j<array.GetLength(1);j++)
+        for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            for(int k=0;k<array.GetLength(2);k++)
-            {
-                Console.Write("["+i+","+j+","+k+"]"+array[i,j,k]+"");
-            }
+            for (int k = 0; k < matrix.GetLength(2); k++) { Console.Write($"{matrix[i, j, k],1}({i},{j},{k}) "); }
             Console.WriteLine();
         }
-        Console.WriteLine();
     }
-    Console.WriteLine();
 }
 
-Console.Write("Введите: ");
-int n = int.Parse(Console.ReadLine()!);
-Console.Write("Введите: ");
-int m = int.Parse(Console.ReadLine()!);
-Console.Write("Введите: ");
-int l = int.Parse(Console.ReadLine()!);
-
-int[,,] array = RandomArray(m,n,l);
-ShowArray(array);
+int[,,] array3D = CreateMatrix(2, 2, 2, 10, 99);
+PrintMatrix(array3D);
+Console.ReadLine();
